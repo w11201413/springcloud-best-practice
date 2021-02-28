@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.wang.common.core.autoconfig.ScanAutoConfiguration

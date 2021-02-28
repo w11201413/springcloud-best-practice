@@ -6,7 +6,14 @@
 
     <groupId>com.wang.cloud</groupId>
     <artifactId>springcloud-best-practice</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
+    <modules>
+        <module>cloud-consumer</module>
+        <module>cloud-provider</module>
+        <module>cloud-common</module>
+    </modules>
 
     <!--  版本管理  -->
     <properties>
@@ -15,6 +22,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <mysql.version>8.0.22</mysql.version>
         <druid.version>1.2.4</druid.version>
+        <flyway.version>6.5.7</flyway.version>
         <junit.version>4.13</junit.version>
         <log4j.version>1.2.17</log4j.version>
         <lombok.version>1.18.18</lombok.version>
@@ -64,6 +72,11 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-core</artifactId>
+                <version>${flyway.version}</version>
             </dependency>
 
             <!--   系统组件    -->
