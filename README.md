@@ -32,3 +32,4 @@
 
 ### 服务注册与配置中心
 * 技术选型: Nacos
+* 命名空间: dev(default), verify, prod

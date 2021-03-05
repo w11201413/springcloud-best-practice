@@ -103,11 +103,17 @@
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
 
     <build>
+        <finalName>${project.artifactId}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -119,5 +125,38 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <!--  开发环境  -->
+            <id>dev</id>
+            <properties>
+                <profiles.active>dev</profiles.active>
+                <nacos.server-addr>39.105.200.0:8848</nacos.server-addr>
+                <nacos.namespace>dev</nacos.namespace>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <!--  测试环境  -->
+            <id>verify</id>
+            <properties>
+                <profiles.active>verify</profiles.active>
+                <nacos.server-addr>39.105.200.0:8848</nacos.server-addr>
+                <nacos.namespace>verify</nacos.namespace>
+            </properties>
+        </profile>
+        <profile>
+            <!--  正式环境  -->
+            <id>prod</id>
+            <properties>
+                <profiles.active>prod</profiles.active>
+                <nacos.server-addr>39.105.200.0:8848</nacos.server-addr>
+                <nacos.namespace>prod</nacos.namespace>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>

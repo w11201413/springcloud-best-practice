@@ -3,7 +3,9 @@ server:
 
 spring:
   application:
-    name: consumer
+    name: cloud-provider
+  profiles:
+    active: @profiles.active@
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/cloud-provider
@@ -24,6 +26,8 @@ spring:
         exclusions: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
       # 配置DruidStatViewServlet
       stat-view-servlet:
+        # 新版需要配置这个属性才能访问监控页面
+        enabled: true
         url-pattern: "/druid/*"
         # IP白名单(没有配置或者为空，则允许所有访问)
         allow: 127.0.0.1
@@ -35,15 +39,18 @@ spring:
         login-username: admin
         # 登录密码
         login-password: 123456
-        # 新版需要配置这个属性才能访问监控页面
-        enabled: true
   jpa:
     hibernate:
       ddl-auto: none
     show-sql: true
   flyway:
+    # 是否开启
     enabled: true
+    # 是否按照版本顺序加载
     out-of-order: true
+    # 迁移自动调整数据基线
     baseline-on-migrate: true
+    # 忽略缺失版本
     ignore-missing-migrations: true
+    # 清除校验错误版本记录
     clean-on-validation-error: true
